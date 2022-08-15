@@ -10,7 +10,9 @@ public class Day02
 
     public int ExecuteSecondTask()
     {
-        return 0;
+        var data = ReadInput();
+        (int horizontalPosition, int depth) = PerformImprovedMovement(data);
+        return horizontalPosition * depth;
     }
 
     public List<string> ReadInput()
@@ -37,6 +39,33 @@ public class Day02
                     break;
                 case "down":
                     depth += distance;
+                    break;
+            }
+        }
+
+        return (horizontalPosition, depth);
+    }
+
+    private (int, int) PerformImprovedMovement(List<string> data)
+    {
+        int horizontalPosition = 0;
+        int depth = 0;
+        int aim = 0;
+        foreach(var item in data)
+        {
+            var direction = item.Split(' ')[0];
+            var distance = Convert.ToInt32( item.Split(' ')[1]);
+            switch(direction)
+            {
+                case "forward":
+                    horizontalPosition += distance;
+                    depth += (aim * distance);
+                    break;
+                case "up":
+                    aim -= distance;
+                    break;
+                case "down":
+                    aim += distance;
                     break;
             }
         }

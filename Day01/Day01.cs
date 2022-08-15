@@ -16,6 +16,14 @@ public class Day01
         return numberOfIncreases;
     }
 
+    public int ExecuteSecondTask()
+    {
+        var data = ReadInput();
+        var slidingWindowData = CreateSlidingWindowList(data);
+        int numberOfIncreases = CountIncreases(slidingWindowData);
+        return numberOfIncreases;
+    }
+
     private int CountIncreases(List<int> input)
     {
         int numberOfIncreases = 0;
@@ -27,5 +35,15 @@ public class Day01
             }
         }
         return numberOfIncreases;
+    }
+
+    private List<int> CreateSlidingWindowList(List<int> data)
+    {
+        List<int> result = new List<int>();
+        for(int i = 2; i < data.Count; i++)
+        {
+            result.Add(data[i]+data[i-1]+data[i-2]);
+        }
+        return result;
     }
 }

@@ -10,6 +10,7 @@ namespace Common
             Console.WriteLine("=== Day 01 ===");
             Day01 day01 = new Day01();
             Console.WriteLine("Result Task 1: "+ day01.ExecuteFirstTask());
+            Console.WriteLine("Result Task 2: "+ day01.ExecuteSecondTask());
         }
     }
 }

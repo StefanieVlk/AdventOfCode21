@@ -22,6 +22,7 @@ namespace Common
             Console.WriteLine("=== Day 03 ===");
             Day03 day03 = new Day03();
             Console.WriteLine("Result Task 1: "+ day03.ExecuteFirstTask());
+            Console.WriteLine("Result Task 2: "+ day03.ExecuteSecondTask());
         }
     }
 }

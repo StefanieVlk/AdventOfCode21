@@ -16,7 +16,26 @@ public class Day03
 
     public int ExecuteSecondTask()
     {
-        return 0;
+        var data = ReadInput();
+        var oxygenRating = data;
+        var co2Rating = data;
+
+        for(int i = 0; i < data[0].Length; i++)
+        {
+            var mostCommon = GetMajorityForIndex(oxygenRating, i);
+            var leastCommon = GetMinorityForIndex(co2Rating, i);
+            if(oxygenRating.Count > 1)
+            {
+                oxygenRating = oxygenRating.Where(x => Convert.ToInt32(x.Substring(i, 1)) == mostCommon).ToList();
+            }
+            if(co2Rating.Count > 1)
+            {
+                co2Rating = co2Rating.Where(x => Convert.ToInt32(x.Substring(i, 1)) == leastCommon).ToList();
+            }
+        }
+        var oxygenRatingAsInt = Convert.ToInt32(oxygenRating[0], 2);
+        var co2RatingAsInt = Convert.ToInt32(co2Rating[0], 2);
+        return oxygenRatingAsInt * co2RatingAsInt;
     }
 
     public List<string> ReadInput()

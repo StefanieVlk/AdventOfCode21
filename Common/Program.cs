@@ -2,6 +2,7 @@
 using AoCDay01;
 using AoCDay02;
 using AoCDay03;
+using AoCDay04;
 
 namespace Common
 {
@@ -23,6 +24,10 @@ namespace Common
             Day03 day03 = new Day03();
             Console.WriteLine("Result Task 1: "+ day03.ExecuteFirstTask());
             Console.WriteLine("Result Task 2: "+ day03.ExecuteSecondTask());
+
+            Console.WriteLine("=== Day 04 ===");
+            Day04 day04 = new Day04();
+            Console.WriteLine("Result Task 1: "+ day04.ExecuteFirstTask());
         }
     }
 }

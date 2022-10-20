@@ -18,7 +18,16 @@ public class Day04
 
     public int ExecuteSecondTask()
     {
-        
+        var boards = GetAllBoards(ReadInput());
+        var numbers = GetAllNumbers(ReadInput());
+        foreach(var number in numbers)
+        {
+            boards = CrossOccurences(boards, number);
+            if(IsOnlyLooserBoardRemaining(boards, out boards))
+            {
+                return CalculateRemainingSum(boards.Single()) * Convert.ToInt32(number);
+            }
+        }
         return 0;
     }
 
@@ -48,6 +57,31 @@ public class Day04
             {
                 winningBoard = board;
                 return true;
+            }
+        }
+        return false;
+    }
+
+    public bool IsOnlyLooserBoardRemaining(List<string[,]> boards, out List<string[,]> remainingBoards)
+    {
+        remainingBoards = new List<string[,]>(boards);
+        foreach(var board in boards)
+        {
+            if(!IsWinningBoard(board))
+            {
+                continue;
+            }
+            else
+            {
+                if(boards.Count > 1)
+                {
+                    remainingBoards.Remove(board);
+                }
+                else
+                {
+                    return true;
+                }
+
             }
         }
         return false;
